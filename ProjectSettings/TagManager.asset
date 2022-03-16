@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - TownHall
+  - LevelElement
+  - Road
+  - Structure
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -15,11 +19,11 @@ TagManager:
   - UI
   - Enemy
   - TownHall
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Road
+  - LevelElements
+  - Structure
+  - Projectile
+  - Ground
   - 
   - 
   - 

@@ -30,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
 	{
 		for (int i = 0; i < count; i++)
 		{
+			Random.InitState((int)Time.time);
 			EnemyAI enemyAI = Instantiate(enemies[Random.Range(0, enemies.Length)], transform.position, Quaternion.identity, transform).GetComponent<EnemyAI>();
 			enemyAI.Waypoints = waypoints;
 			EnemyManager.instance.EnemyCount++;

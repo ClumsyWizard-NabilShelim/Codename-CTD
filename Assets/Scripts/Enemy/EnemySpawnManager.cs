@@ -16,6 +16,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     public void SpawnEnemies()
 	{
+        Random.InitState(Random.Range(0, int.MaxValue));
         int numberOfRoads = Random.Range(1, maxRoads + 1);
 
 		for (int i = 0; i < numberOfRoads; i++)

@@ -18,19 +18,22 @@ namespace ClumsyWizard.Utilities
 			}
 		}
 
-		public static Vector3 GetMouseWorldPosition(bool setYToZero)
+		public static Vector3 GetMouseWorldPosition()
 		{
 			Vector3 mousePos = Camera.ScreenToWorldPoint(Input.mousePosition);
-
-			if(setYToZero)
-				mousePos.y = 0.0f;
-
 			return mousePos;
 		}
 
 		public static Ray ShootRayFromMouse()
 		{
-			return Camera.ScreenPointToRay(Input.mousePosition);
+			if(Camera.orthographic)
+			{
+				Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				return new Ray(mousePos, Camera.transform.forward * 1000.0f);
+			}
+
+			Debug.LogWarning("Ray shooting for perpective camera not implemented!");
+			return new Ray();
 		}
 	}
 }

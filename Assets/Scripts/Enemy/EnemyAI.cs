@@ -35,6 +35,7 @@ public abstract class EnemyAI : MonoBehaviour
 
 		Vector3 direction = Waypoints[currentWaypoint].position - transform.position;
 		direction.y = 0.0f;
+		transform.LookAt(direction);
 
 		rb.velocity = direction.normalized * moveSpeed;
 

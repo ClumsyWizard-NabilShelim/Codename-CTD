@@ -4,15 +4,15 @@ using ClumsyWizard.Utilities;
 
 public abstract class EntityStats : MonoBehaviour, IDamageable
 {
-	[SerializeField] private int health;
-	private int currentHealth;
+	[SerializeField] protected int health;
+	protected int currentHealth;
 
 	private void Awake()
 	{
 		currentHealth = health;
 	}
 
-	public void Damage(int amount)
+	public virtual void Damage(int amount)
 	{
 		currentHealth -= amount;
 

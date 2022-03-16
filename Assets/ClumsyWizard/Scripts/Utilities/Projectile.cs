@@ -22,7 +22,7 @@ namespace ClumsyWizard.Utilities
 
 		private void Update()
 		{
-			Collider[] hitColliders = Physics.OverlapSphere(transform.position, damageRadius, hitableLayer);
+			Collider[] hitColliders = Physics.OverlapSphere(transform.position, damageRadius);
 
 			if (hitColliders != null && hitColliders.Length != 0)
 			{

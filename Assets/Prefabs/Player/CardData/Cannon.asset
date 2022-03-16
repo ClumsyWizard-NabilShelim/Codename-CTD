@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1973ddffc0cd71a478ac197ece40a162, type: 3}
+  m_Name: Cannon
+  m_EditorClassIdentifier: 
+  name: Cannon
+  cost: 10
+  description: Cannon
+  portrait: {fileID: 21300000, guid: 8ebec24b23351ca438bba3e3aa682026, type: 3}
+  type: 0
+  prefab: {fileID: 3393622621036490005, guid: b901f3309a66de54bb5feab1337a9538, type: 3}
+  health: 5
+  damage: 1

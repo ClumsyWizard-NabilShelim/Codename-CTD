@@ -12,7 +12,7 @@ public class GameManager : StaticInstance<GameManager>
 	[SerializeField] private TextMeshProUGUI wavesClearedText;
 	public int WavesCleared { get; set; }
 	public bool IsGameOver { get; private set; }
-	
+
 	public void GameOver()
 	{
 		IsGameOver = true;
