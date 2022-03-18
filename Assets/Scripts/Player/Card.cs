@@ -10,6 +10,9 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDrag
     private CardData data;
     private new RectTransform transform;
     [SerializeField] private GameObject statsContainerPrefab;
+    private Vector2 moveTo;
+    private bool move;
+    [SerializeField] private float moveSpeed = 20.0f;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI nameText;
@@ -42,7 +45,7 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDrag
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
-        CardManager.instance.CardSelected(transform, data.Prefab);
+        CardManager.instance.CardSelected(this, data.Prefab);
     }
 
 	public void OnPointerUp(PointerEventData eventData)
@@ -50,8 +53,27 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDrag
         CardManager.instance.CardDropped(data);
     }
 
-    //Helper
-    private void AddStatContainer(int amount)
+    public void MoveTo(Vector2 moveTo)
+	{
+        this.moveTo = moveTo;
+        move = true;
+	}
+
+	private void Update()
+	{
+		if(move)
+		{
+            transform.localPosition = Vector2.MoveTowards(transform.localPosition, moveTo, moveSpeed * Time.deltaTime);
+
+            if(Vector2.Distance(transform.localPosition, moveTo) <= 0.25f)
+			{
+                move = false;
+			}
+		}
+	}
+
+	//Helper
+	private void AddStatContainer(int amount)
 	{
         Instantiate(statsContainerPrefab, statsHolder).GetComponent<CardStatsContainer>().SetAmount(amount);
     }

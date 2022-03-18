@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using ClumsyWizard.Utilities;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(EnemyStats))]
 public abstract class EnemyAI : MonoBehaviour
 {
-	private Rigidbody rb;
+	protected Rigidbody rb;
 	protected EnemyStats stats;
 
 	[Header("Moving")]
@@ -17,7 +18,7 @@ public abstract class EnemyAI : MonoBehaviour
 	[Header("Attacking")]
 	[SerializeField] protected int damage;
 
-	protected void Start()
+	protected void Awake()
 	{
 		currentWaypoint = 0;
 
@@ -42,6 +43,24 @@ public abstract class EnemyAI : MonoBehaviour
 		if(direction.magnitude <= stoppingThreshold)
 		{
 			currentWaypoint++;
+		}
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("TownHall"))
+		{
+			IDamageable damageable = other.GetComponent<IDamageable>();
+
+			if (damageable != null)
+			{
+				damageable.Damage(damage);
+				stats.Damage(100);
+			}
+			else
+			{
+				Debug.LogWarning("TownHall has no IDamageable script");
+			}
 		}
 	}
 }

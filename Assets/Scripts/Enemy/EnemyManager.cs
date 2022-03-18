@@ -6,7 +6,7 @@ using ClumsyWizard.Utilities;
 public class EnemyManager : StaticInstance<EnemyManager>
 {
 	private EnemySpawnManager enemySpawnManager;
-	[SerializeField] private int enemyCount;
+	public int enemyCount;
 
 	public int EnemyCount
 	{
@@ -21,8 +21,8 @@ public class EnemyManager : StaticInstance<EnemyManager>
 
 			if(enemyCount <= 0)
 			{
-				GameManager.instance.WavesCleared++;
-				enemySpawnManager.SpawnEnemies();
+				GameManager.instance.WaveCleared();
+				enemySpawnManager.SpawnEnemies = true;
 			}
 		}
 	}
@@ -30,6 +30,6 @@ public class EnemyManager : StaticInstance<EnemyManager>
 	private void Start()
 	{
 		enemySpawnManager = GetComponent<EnemySpawnManager>();
-		enemySpawnManager.SpawnEnemies();
+		enemySpawnManager.SpawnEnemies = true;
 	}
 }

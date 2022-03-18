@@ -4,41 +4,48 @@ using UnityEngine;
 namespace ClumsyWizard.Utilities
 {
 	[RequireComponent(typeof(Rigidbody))]
-	public class Projectile : MonoBehaviour
+	public abstract class Projectile : MonoBehaviour
 	{
-		[SerializeField] private float moveSpeed;
-		[SerializeField] private float damageRadius;
-		[SerializeField] private float lifetime;
-		private int damage;
-		[SerializeField] private LayerMask hitableLayer;
+		[SerializeField] protected float damageRadius;
+		protected int damage;
+		[SerializeField] protected LayerMask hitableLayer;
+		[SerializeField] protected float lifetime;
+		protected bool Initialized { get; private set; }
 
-		public void Initialize(int damage, LayerMask damageableLayer)
+		public virtual void Initialize(int damage, Transform target, LayerMask hitableLayer)
 		{
 			this.damage = damage;
-			hitableLayer |= damageableLayer;
-			GetComponent<Rigidbody>().AddForce(moveSpeed * transform.forward, ForceMode.Impulse);
+			this.hitableLayer |= hitableLayer;
 			Destroy(gameObject, lifetime);
+			Initialized = true;
 		}
 
-		private void Update()
+		protected void Damage()
 		{
 			Collider[] hitColliders = Physics.OverlapSphere(transform.position, damageRadius);
 
 			if (hitColliders != null && hitColliders.Length != 0)
 			{
-				IDamageable damageable = hitColliders[0].GetComponent<IDamageable>();
+				for (int i = 0; i < hitColliders.Length; i++)
+				{
+					if ((hitableLayer.value & (1 << hitColliders[i].gameObject.layer)) > 0)
+					{
+						IDamageable damageable = hitColliders[i].GetComponent<IDamageable>();
 
-				if (damageable != null)
-					damageable.Damage(damage);
+						if (damageable != null)
+							damageable.Damage(damage);
 
-				//TODO: Particle effects
-				Destroy(gameObject);
+						//TODO: Particle effects
+						Destroy(gameObject);
+					}
+				}
 			}
 		}
 
 		//Debug
-		private void OnDrawGizmosSelected()
+		private void OnDrawGizmos()
 		{
+			Gizmos.color = Color.red;
 			Gizmos.DrawWireSphere(transform.position, damageRadius);
 		}
 	}

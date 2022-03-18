@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 592106001899107240}
   - component: {fileID: 592106001899107241}
   - component: {fileID: 592106001899107243}
+  - component: {fileID: 6845468848924281278}
   m_Layer: 10
   m_Name: StructureBase
   m_TagString: Structure
@@ -45,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc7d4e2649a7944e8d6d4ec64f02190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
   healthText: {fileID: 5754732052680612919}
   healthBar: {fileID: 592106001892503867}
 --- !u!65 &592106001899107243
@@ -57,10 +57,34 @@ BoxCollider:
   m_GameObject: {fileID: 592106001899107254}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.340014, y: 1.0610775, z: 1.2704859}
   m_Center: {x: 0, y: 0.5278837, z: 0.13524294}
+--- !u!114 &6845468848924281278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592106001899107254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4fe2a0f50588c47bc93ea450885231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDelay: 0
+  attackRange: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  projectilePrefab: {fileID: 0}
+  projectileSpawnPoint: {fileID: 0}
+  rotateableMesh: {fileID: 0}
+  lookSpeed: 10
 --- !u!1001 &3829795969584507624
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,14 +10,20 @@ public class GameManager : StaticInstance<GameManager>
 {
 	[SerializeField] private Animator gameoverCanvasAnimator;
 	[SerializeField] private TextMeshProUGUI wavesClearedText;
-	public int WavesCleared { get; set; }
+	private int wavesCleared;
 	public bool IsGameOver { get; private set; }
 
 	public void GameOver()
 	{
 		IsGameOver = true;
 		gameoverCanvasAnimator.SetTrigger("Show");
-		wavesClearedText.text = WavesCleared.ToString() + " Waves Cleared";
+		wavesClearedText.text = wavesCleared.ToString() + " Waves Cleared";
+	}
+
+	public void WaveCleared()
+	{
+		wavesCleared++;
+		HandManager.instance.DrawCards();
 	}
 
 	//UI

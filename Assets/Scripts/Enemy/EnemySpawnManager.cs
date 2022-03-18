@@ -5,26 +5,35 @@ using UnityEngine;
 public class EnemySpawnManager : MonoBehaviour
 {
     private EnemySpawner[] enemySpawners;
-    private int maxRoads;
+    public bool SpawnEnemies { get; set; }
+    [SerializeField] private float timeBetweenWaves;
+    private float currentTime;
 
     private void Start()
     {
         enemySpawners = FindObjectsOfType<EnemySpawner>();
-
-        maxRoads = 1;
+        currentTime = timeBetweenWaves;
     }
 
-    public void SpawnEnemies()
+    private void Update()
 	{
-        Random.InitState(Random.Range(0, int.MaxValue));
-        int numberOfRoads = Random.Range(1, maxRoads + 1);
+        if (!SpawnEnemies)
+            return;
 
-		for (int i = 0; i < numberOfRoads; i++)
+        if (currentTime <= 0)
+        {
+            int numberOfRoads = Random.Range(1, enemySpawners.Length);
+
+            for (int i = 0; i < numberOfRoads; i++)
+            {
+                enemySpawners[i].Spawn();
+            }
+            SpawnEnemies = false;
+            currentTime = timeBetweenWaves;
+        }
+        else
 		{
-            enemySpawners[i].Spawn();
+            currentTime -= Time.deltaTime;
 		}
-
-        if (maxRoads < enemySpawners.Length - 1)
-            maxRoads++;
     }
 }

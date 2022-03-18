@@ -7,7 +7,7 @@ using UnityEngine;
 public class CardManager : StaticInstance<CardManager>
 {
 	private HandManager handManager;
-	private RectTransform selectedCard;
+	private Card selectedCard;
 	private Transform cardPrefabPreview;
 	private Node nodeUnderMouse;
 	private RaycastHit hit;
@@ -25,7 +25,7 @@ public class CardManager : StaticInstance<CardManager>
 		Debug.DrawLine(Camera.main.transform.position, direction.normalized * Mathf.Infinity, Color.red, 0.1f);
 	}
 
-	public void CardSelected(RectTransform card, GameObject previewPrefab)
+	public void CardSelected(Card card, GameObject previewPrefab)
 	{
 		selectedCard = card;
 		cardPrefabPreview = Instantiate(previewPrefab).transform;
@@ -42,7 +42,7 @@ public class CardManager : StaticInstance<CardManager>
 		{
 			SetNodeUnderMouse();
 
-			if (nodeUnderMouse != null)
+			if (nodeUnderMouse != null && nodeUnderMouse.Empty)
 				cardPrefabPreview.position = new Vector3(nodeUnderMouse.WorldPosition.x, 0.5f, nodeUnderMouse.WorldPosition.z);
 		}
 	}
@@ -63,10 +63,13 @@ public class CardManager : StaticInstance<CardManager>
 
 	public void CardDropped(CardData data)
 	{
-		if (cardPrefabPreview != null)
+		if (cardPrefabPreview != null && nodeUnderMouse.Empty)
 		{
 			if (data.Type == CardType.Structure)
+			{
 				cardPrefabPreview.GetComponent<Structure>().Initialize((StructureData)data);
+				nodeUnderMouse.Empty = false;
+			}
 
 			handManager.RemoveCard(selectedCard);
 		}

@@ -1,33 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ClumsyWizard.Utilities;
 
-public class HandManager : MonoBehaviour
+public class HandManager : StaticInstance<HandManager>
 {
 	[Header("Card")]
 	[SerializeField] private RectTransform cardHolder;
+	[SerializeField] private RectTransform cardSpawnPoint;
 	[SerializeField] private GameObject cardPrefab;
 	[SerializeField] private List<CardData> cardDatas;
-	private List<RectTransform> cards = new List<RectTransform>();
+	private List<Card> cards = new List<Card>();
 
 	[Header("Hand")]
 	[SerializeField] private int cardSpacing;
 	[SerializeField] private int maxHandSize;
 	private int currentHandSize;
-	[SerializeField] private int startingHandSize;
 	private Vector2 cardSize;
 
 	private void Start()
 	{
-		for (int i = 0; i < startingHandSize; i++)
-		{
-			AddCard(cardDatas[Random.Range(0, cardDatas.Count)]);
-		}
-
-		currentHandSize = 0;
-
-		cardSize = cards[0].sizeDelta;
-		FitCards();
+		DrawCards();
 	}
 
 	private void AddCard(CardData data)
@@ -35,19 +28,19 @@ public class HandManager : MonoBehaviour
 		if (currentHandSize >= maxHandSize)
 			return;
 
-		Card card = Instantiate(cardPrefab, cardHolder).GetComponent<Card>();
-		cards.Add(card.GetComponent<RectTransform>());
+		Card card = Instantiate(cardPrefab, cardSpawnPoint.position, cardPrefab.transform.rotation, cardHolder).GetComponent<Card>();
+		cards.Add(card);
 		card.Initialize(data);
 		currentHandSize++;
 	}
 
-	public void RemoveCard(RectTransform transform)
+	public void RemoveCard(Card card)
 	{
 		if (cards.Count == 0)
 			return;
 
-		cards.Remove(transform);
-		Destroy(transform.gameObject);
+		cards.Remove(card);
+		Destroy(card.gameObject);
 		currentHandSize--;
 		FitCards();
 	}
@@ -62,7 +55,20 @@ public class HandManager : MonoBehaviour
 		for (int i = 0; i < cards.Count; i++)
 		{
 			Vector2 moveTo = new Vector2((startingX + (i * cardSize.x)) + (i * cardSpacing), cardSize.y / 2.0f);
-			cards[i].localPosition = moveTo;
+			cards[i].MoveTo(moveTo);
 		}
+	}
+
+	public void DrawCards()
+	{
+		for (int i = 0; i < maxHandSize; i++)
+		{
+			AddCard(cardDatas[Random.Range(0, cardDatas.Count)]);
+		}
+
+		if(cardSize == Vector2.zero)
+			cardSize = cards[0].GetComponent<RectTransform>().sizeDelta;
+
+		FitCards();
 	}
 }

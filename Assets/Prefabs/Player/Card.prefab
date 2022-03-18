@@ -455,6 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statsContainerPrefab: {fileID: 4268354622817349177, guid: dbec3b58fde605148867e7a8568f7e57, type: 3}
+  moveSpeed: 2000
   nameText: {fileID: 5789961000267774330}
   statsHolder: {fileID: 5789961000132330492}
   descriptionText: {fileID: 5789960998853566553}

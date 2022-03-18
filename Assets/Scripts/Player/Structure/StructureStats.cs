@@ -4,8 +4,11 @@ using UnityEngine.UI;
 using ClumsyWizard.Utilities;
 using TMPro;
 
-public class StructureStats : EntityStats
+public class StructureStats : MonoBehaviour, IDamageable
 {
+	private int health;
+	private int currentHealth;
+
 	[SerializeField] private TextMeshProUGUI healthText;
 	[SerializeField] private Image healthBar;
 
@@ -16,10 +19,12 @@ public class StructureStats : EntityStats
 		UpdateUI();
 	}
 
-	public override void Damage(int amount)
+	public void Damage(int amount)
 	{
-		base.Damage(amount);
+		currentHealth -= amount;
 		UpdateUI();
+		if (currentHealth <= 0)
+			RemoveEntity();
 	}
 
 	private void UpdateUI()
@@ -28,7 +33,7 @@ public class StructureStats : EntityStats
 		healthText.text = currentHealth.ToString() + " / " + health.ToString();
 	}
 
-	protected override void RemoveEntity()
+	private void RemoveEntity()
 	{
 		Destroy(gameObject);
 	}

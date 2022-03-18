@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!224 &36996857 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3763962634397425775, guid: 601a24d9683e30648af12841d3c26764, type: 3}
+  m_PrefabInstance: {fileID: 3763962633214422935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &40658787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -432,14 +437,6 @@ PrefabInstance:
       propertyPath: timeBetweenSpawn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1451308929411158123, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
-      propertyPath: enemies.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1451308929411158123, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
-      propertyPath: enemies.Array.data[0]
-      value: 
-      objectReference: {fileID: 5055258294665269311, guid: 76f142147e8257742a9d217797cbd603, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
 --- !u!4 &169889392 stripped
@@ -732,14 +729,6 @@ PrefabInstance:
       propertyPath: timeBetweenSpawn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1451308929411158123, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
-      propertyPath: enemies.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1451308929411158123, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
-      propertyPath: enemies.Array.data[0]
-      value: 
-      objectReference: {fileID: 5055258294665269311, guid: 76f142147e8257742a9d217797cbd603, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
 --- !u!4 &243291959 stripped
@@ -818,14 +807,6 @@ PrefabInstance:
       propertyPath: timeBetweenSpawn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1451308929411158123, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
-      propertyPath: enemies.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1451308929411158123, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
-      propertyPath: enemies.Array.data[0]
-      value: 
-      objectReference: {fileID: 5055258294665269311, guid: 76f142147e8257742a9d217797cbd603, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
 --- !u!4 &367557655 stripped
@@ -1403,18 +1384,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1451308929411158123, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
-      propertyPath: timeBetweenSpawn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1451308929411158123, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
-      propertyPath: enemies.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1451308929411158123, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
-      propertyPath: enemies.Array.data[0]
-      value: 
-      objectReference: {fileID: 5055258294665269311, guid: 76f142147e8257742a9d217797cbd603, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eeb65baf775c3e43908b42d09d085ec, type: 3}
 --- !u!4 &695499014 stripped
@@ -1663,6 +1632,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 951659595550971718, guid: 18ce9428212895445844332ffa750507, type: 3}
   m_PrefabInstance: {fileID: 815711411}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &822364111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 822364112}
+  m_Layer: 5
+  m_Name: CardSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &822364112
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822364111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 36996857}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 440, y: -440}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &951982346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,23 +2553,6 @@ Transform:
   m_Father: {fileID: 1862740775}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1627653741 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3763962634841549306, guid: 601a24d9683e30648af12841d3c26764, type: 3}
-  m_PrefabInstance: {fileID: 3763962633214422935}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1627653742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627653741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b596e38794bab554b9075f5964c7f1cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1668181477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3342,6 +3329,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3763962634841549304, guid: 601a24d9683e30648af12841d3c26764, type: 3}
+      propertyPath: cardSpawnPoint
+      value: 
+      objectReference: {fileID: 822364112}
     - target: {fileID: 3763962634841549305, guid: 601a24d9683e30648af12841d3c26764, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -3538,7 +3529,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8957780604396423980, guid: 90e3f5b5ad741844888736ad04217362, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957780604396423981, guid: 90e3f5b5ad741844888736ad04217362, type: 3}
+      propertyPath: timeBetweenWaves
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90e3f5b5ad741844888736ad04217362, type: 3}

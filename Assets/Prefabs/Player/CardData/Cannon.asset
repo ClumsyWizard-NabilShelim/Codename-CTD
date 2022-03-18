@@ -19,4 +19,4 @@ MonoBehaviour:
   type: 0
   prefab: {fileID: 3393622621036490005, guid: b901f3309a66de54bb5feab1337a9538, type: 3}
   health: 5
-  damage: 1
+  damage: 2

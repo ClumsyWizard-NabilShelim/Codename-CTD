@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using ClumsyWizard.Utilities;
 
-public abstract class Structure : MonoBehaviour
+public class Structure : MonoBehaviour
 {
-    private StructureData data;
 	private StructureStats stats;
+
 	private bool initialized;
 
 	[SerializeField] private float attackDelay;
@@ -15,8 +15,12 @@ public abstract class Structure : MonoBehaviour
 	[SerializeField] private LayerMask enemyLayer;
 	[SerializeField] private LayerMask obstacleLayer;
 	[SerializeField] private GameObject projectilePrefab;
-	[SerializeField] private Transform attackOrigin;
+	[SerializeField] private Transform projectileSpawnPoint;
 	protected Transform attackTarget;
+
+	[Header("Visuals")]
+	[SerializeField] private Transform rotateableMesh;
+	[SerializeField] private float lookSpeed = 10.0f;
 
 	[Header("Stats")]
 	private int damage;
@@ -28,11 +32,11 @@ public abstract class Structure : MonoBehaviour
 
     public virtual void Initialize(StructureData data)
 	{
-		this.data = data;
 		stats = GetComponent<StructureStats>();
 		stats.Initialize(data);
 		damage = data.Damage;
 		initialized = true;
+		GetComponent<Collider>().enabled = true;
 	}
 
 	private void Update()
@@ -48,17 +52,15 @@ public abstract class Structure : MonoBehaviour
 
 			for (int i = 0; i < hitColliders.Length; i++)
 			{
-				Vector3 direction = hitColliders[i].transform.position - attackOrigin.position;
+				Vector3 direction = hitColliders[i].transform.position - projectileSpawnPoint.position;
 				RaycastHit hit;
-				Physics.Raycast(attackOrigin.position, direction, out hit, 1.0f, obstacleLayer);
+				Physics.Raycast(transform.position, direction, out hit, 1.0f, obstacleLayer);
 
 				if (hit.collider == null)
 				{
-					float distance = Vector3.Distance(attackOrigin.position, hitColliders[i].transform.position);
-
-					if (distance <= closestDistance)
+					if (direction.magnitude <= closestDistance)
 					{
-						closestDistance = distance;
+						closestDistance = direction.magnitude;
 						attackTarget = hitColliders[i].transform;
 					}
 				}
@@ -80,8 +82,8 @@ public abstract class Structure : MonoBehaviour
 
 		if (currentTime <= 0)
 		{
-			Projectile projectile = Instantiate(projectilePrefab, attackOrigin.position, attackOrigin.rotation).GetComponent<Projectile>();
-			projectile.Initialize(damage, enemyLayer);
+			Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation).GetComponent<Projectile>();
+			projectile.Initialize(damage, attackTarget, enemyLayer);
 			currentTime = attackDelay;
 		}
 		else
@@ -90,7 +92,13 @@ public abstract class Structure : MonoBehaviour
 		}
 	}
 
-	protected abstract void RotateTowardsTarget();
+	private void RotateTowardsTarget()
+	{
+		Vector3 directionToTarget = attackTarget.position - rotateableMesh.position;
+		Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+		Quaternion targetRotation = Quaternion.Euler(0, lookRotation.eulerAngles.y, 0);
+		rotateableMesh.rotation = Quaternion.Slerp(rotateableMesh.rotation, targetRotation, lookSpeed * Time.deltaTime);
+	}
 
 	//Debug
 	private void OnDrawGizmosSelected()

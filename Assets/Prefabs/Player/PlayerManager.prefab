@@ -81,6 +81,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3763962634841549305}
   - component: {fileID: 3763962634841549304}
+  - component: {fileID: 1627653742}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -119,9 +120,23 @@ MonoBehaviour:
   cardPrefab: {fileID: 5789961000217469040, guid: 8e49176580719cd408e723aa72634d40, type: 3}
   cardDatas:
   - {fileID: 11400000, guid: c32148146092c944994e8488f6778505, type: 2}
+  - {fileID: 11400000, guid: 76ed44e470c09bf41b2f3222da2fccf2, type: 2}
+  - {fileID: 11400000, guid: e5d202e2f4d9f944daa3193e25a3784e, type: 2}
+  - {fileID: 11400000, guid: 48063d724b7e3324b83e87ba9029a2c7, type: 2}
   cardSpacing: 20
-  maxHandSize: 7
-  startingHandSize: 5
+  maxHandSize: 6
+--- !u!114 &1627653742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763962634841549306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b596e38794bab554b9075f5964c7f1cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3763962634572185035
 PrefabInstance:
   m_ObjectHideFlags: 0
