@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: MissileLauncher
   m_EditorClassIdentifier: 
   name: Missile Launcher
-  cost: 20
   description: MissileLauncher
   portrait: {fileID: 21300000, guid: 561297e91bace0148ab01687583ceab9, type: 3}
   type: 0
   prefab: {fileID: 2862705613170234292, guid: 6cbec3c78e4bf13409ea21ee6bb00eed, type: 3}
   health: 5
-  damage: 5
+  damage: 3

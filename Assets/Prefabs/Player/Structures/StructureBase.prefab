@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 592106001899107240}
   - component: {fileID: 592106001899107241}
   - component: {fileID: 592106001899107243}
+  - component: {fileID: 7673170372271850660}
   - component: {fileID: 6845468848924281278}
   m_Layer: 10
   m_Name: StructureBase
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 5754732052680612919}
   healthBar: {fileID: 592106001892503867}
+  deathEffect: {fileID: 206975813379663870, guid: a6a4eaa7126175142a675d6fff346854, type: 3}
 --- !u!65 &592106001899107243
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61,6 +63,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.340014, y: 1.0610775, z: 1.2704859}
   m_Center: {x: 0, y: 0.5278837, z: 0.13524294}
+--- !u!95 &7673170372271850660
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592106001899107254}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &6845468848924281278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,6 +106,8 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 0}
   rotateableMesh: {fileID: 0}
   lookSpeed: 10
+  shootEffectPrefab: {fileID: 2998789726981589108, guid: de5bcc43614f092488cda15646276a8c, type: 3}
+  placeEffectPrefab: {fileID: 206975813379663870, guid: 1c0061210fc774d42adb237525184241, type: 3}
 --- !u!1001 &3829795969584507624
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ namespace ClumsyWizard.Utilities
 		[SerializeField] protected LayerMask hitableLayer;
 		[SerializeField] protected float lifetime;
 		protected bool Initialized { get; private set; }
+		[SerializeField] private GameObject hitEffectPrefab;
+		[SerializeField] private string destroyEffectName;
 
 		public virtual void Initialize(int damage, Transform target, LayerMask hitableLayer)
 		{
@@ -35,7 +37,10 @@ namespace ClumsyWizard.Utilities
 						if (damageable != null)
 							damageable.Damage(damage);
 
-						//TODO: Particle effects
+						AudioManager.PlayAudio(destroyEffectName);
+
+						GameObject effect = Instantiate(hitEffectPrefab, transform.position, hitEffectPrefab.transform.rotation);
+						Destroy(effect, 1.0f);
 						Destroy(gameObject);
 					}
 				}

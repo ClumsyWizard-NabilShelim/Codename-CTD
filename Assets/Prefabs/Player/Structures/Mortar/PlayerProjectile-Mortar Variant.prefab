@@ -86,11 +86,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1839563309, guid: 696b1d7d0c4c87741923876ffb8cd217, type: 3}
       propertyPath: apexHeight
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1839563309, guid: 696b1d7d0c4c87741923876ffb8cd217, type: 3}
       propertyPath: damageRadius
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839563309, guid: 696b1d7d0c4c87741923876ffb8cd217, type: 3}
+      propertyPath: hitEffectPrefab
+      value: 
+      objectReference: {fileID: 206975813379663870, guid: 7aed1b99750e4e3488eeafdc961ab6bf, type: 3}
+    - target: {fileID: 1839563309, guid: 696b1d7d0c4c87741923876ffb8cd217, type: 3}
+      propertyPath: destroyEffectName
+      value: Explosion
       objectReference: {fileID: 0}
     - target: {fileID: 1839563309, guid: 696b1d7d0c4c87741923876ffb8cd217, type: 3}
       propertyPath: hitableLayer.m_Bits

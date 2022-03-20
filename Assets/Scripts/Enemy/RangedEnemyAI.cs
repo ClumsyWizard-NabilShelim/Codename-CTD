@@ -6,6 +6,7 @@ using ClumsyWizard.Utilities;
 public class RangedEnemyAI : EnemyAI
 {
 	[SerializeField] private LayerMask enemyLayer;
+	[SerializeField] private LayerMask obstacleLayer;
 	[SerializeField] private float attackRanged;
 	[SerializeField] private GameObject projectilePrefab;
 	[SerializeField] private Transform projectileSpawnPoint;
@@ -26,8 +27,8 @@ public class RangedEnemyAI : EnemyAI
 		if(cols != null && cols.Length != 0)
 		{
 			Vector3 direction = cols[0].transform.position - transform.position;
-
-			if (!Physics.Raycast(transform.position, direction, 1.0f, enemyLayer))
+			Debug.DrawRay(transform.position, direction, Color.red, 0.1f);
+			if (!Physics.Raycast(transform.position, direction, 1.0f, obstacleLayer))
 			{
 				targetCol = cols[0];
 			}
@@ -46,6 +47,7 @@ public class RangedEnemyAI : EnemyAI
 
 		if (currentTime <= 0)
 		{
+			AudioManager.PlayAudio("EnemyAttack");
 			Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation).GetComponent<Projectile>();
 			projectile.Initialize(damage, targetCol.transform, enemyLayer);
 			currentTime = attackDelay;

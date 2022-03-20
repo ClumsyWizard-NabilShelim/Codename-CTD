@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Catapult
   m_EditorClassIdentifier: 
   name: Catapult
-  cost: 15
   description: Catapult
   portrait: {fileID: 21300000, guid: b239f2895fc92b84daef35d5af0b290a, type: 3}
   type: 0

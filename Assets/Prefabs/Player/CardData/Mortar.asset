@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Mortar
   m_EditorClassIdentifier: 
   name: Mortar
-  cost: 40
   description: Mortar
   portrait: {fileID: 21300000, guid: 4200258f870cc324fa88127d2dfd3eb1, type: 3}
   type: 0
   prefab: {fileID: 1192546875239260829, guid: e7b56c1fa23178f45ae971fc48fe2640, type: 3}
   health: 8
-  damage: 8
+  damage: 5

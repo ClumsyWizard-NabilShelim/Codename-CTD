@@ -8,7 +8,6 @@ public class MainMenu : MonoBehaviour
 	public void Play()
 	{
 		SceneManagement.instance.Load();
-		Debug.Log("f");
 	}
 	public void Credits()
 	{

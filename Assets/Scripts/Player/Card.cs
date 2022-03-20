@@ -26,8 +26,6 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDrag
         this.data = data;
         nameText.text = data.Name;
 
-        AddStatContainer(data.Cost);
-        
         if(data.Type == CardType.Structure)
 		{
             AddStatContainer(((StructureData)data).Health);

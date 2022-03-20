@@ -12,6 +12,8 @@ public class StructureStats : MonoBehaviour, IDamageable
 	[SerializeField] private TextMeshProUGUI healthText;
 	[SerializeField] private Image healthBar;
 
+	[SerializeField] private GameObject deathEffect;
+
 	public void Initialize(StructureData data)
 	{
 		health = data.Health;
@@ -23,6 +25,7 @@ public class StructureStats : MonoBehaviour, IDamageable
 	{
 		currentHealth -= amount;
 		UpdateUI();
+		AudioManager.PlayAudio("StructureHit");
 		if (currentHealth <= 0)
 			RemoveEntity();
 	}
@@ -35,6 +38,11 @@ public class StructureStats : MonoBehaviour, IDamageable
 
 	private void RemoveEntity()
 	{
+		GridManager.instance.GetNodeFrom(transform.position).Empty = true;
+		CameraShake.instance.ShakeObject(ShakeDuration.Small, ShakeMagnitude.Large);
+		AudioManager.PlayAudio("Explosion");
+		GameObject effect = Instantiate(deathEffect, transform.position, deathEffect.transform.rotation);
+		Destroy(effect, 1.0f);
 		Destroy(gameObject);
 	}
 }

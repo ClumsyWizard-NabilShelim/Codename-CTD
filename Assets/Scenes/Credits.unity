@@ -576,19 +576,19 @@ MonoBehaviour:
     creators of these amazing assets:
 
 
-    https://assetstore.unity.com/packages/2d/gui/icons/simple-ui-icons-147101
+    -https://assetstore.unity.com/packages/2d/gui/icons/simple-ui-icons-147101
 
-    https://assetstore.unity.com/packages/3d/props/weapons/fatty-poly-turret-part-2-free-159989
+    -https://assetstore.unity.com/packages/3d/props/weapons/fatty-poly-turret-part-2-free-159989
 
-    https://assetstore.unity.com/packages/2d/textures-materials/sky/farland-skies-cloudy-crown-60004
+    -https://assetstore.unity.com/packages/2d/textures-materials/sky/farland-skies-cloudy-crown-60004
 
-    https://assetstore.unity.com/packages/3d/environments/fantasy/fantasy-kindom-building-pack-lite-78378
+    -https://assetstore.unity.com/packages/3d/environments/fantasy/fantasy-kindom-building-pack-lite-78378
 
-    https://assetstore.unity.com/packages/3d/characters/creatures/dragon-for-boss-monster-hp-79398
+    -https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-partners-pbr-polyart-168251
 
-    https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-partners-pbr-polyart-168251
+    -https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-duo-pbr-polyart-157762
 
-    https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-duo-pbr-polyart-157762'
+    -https://assetstore.unity.com/packages/3d/props/exterior/cartoon-low-poly-tree-211305'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0

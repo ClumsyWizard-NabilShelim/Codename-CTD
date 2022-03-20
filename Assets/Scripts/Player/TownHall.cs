@@ -8,6 +8,8 @@ public class TownHall : MonoBehaviour, IDamageable
 	[SerializeField] private int health;
 	private int currentHealth;
 
+	[SerializeField] private GameObject deathEffect;
+
 	private void Start()
 	{
 		currentHealth = health;
@@ -23,6 +25,9 @@ public class TownHall : MonoBehaviour, IDamageable
 
 	private void RemoveEntity()
 	{
+		GameObject effect = Instantiate(deathEffect, transform.position, deathEffect.transform.rotation);
+		Destroy(effect, 1.0f);
+
 		GameManager.instance.GameOver();
 		Destroy(gameObject);
 	}

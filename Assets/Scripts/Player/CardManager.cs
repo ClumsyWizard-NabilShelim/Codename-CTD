@@ -63,7 +63,7 @@ public class CardManager : StaticInstance<CardManager>
 
 	public void CardDropped(CardData data)
 	{
-		if (cardPrefabPreview != null && nodeUnderMouse.Empty)
+		if (cardPrefabPreview != null && nodeUnderMouse != null && nodeUnderMouse.Empty)
 		{
 			if (data.Type == CardType.Structure)
 			{

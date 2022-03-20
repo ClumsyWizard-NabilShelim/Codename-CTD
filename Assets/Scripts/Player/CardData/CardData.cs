@@ -11,8 +11,6 @@ public class CardData : ScriptableObject
 {
 	[SerializeField] private new string name;
 
-	[SerializeField] private int cost;
-
 	[TextArea(4, 4)]
 	[SerializeField] private string description;
 
@@ -28,13 +26,6 @@ public class CardData : ScriptableObject
 		}
 	}
 
-	public int Cost
-	{
-		get
-		{
-			return cost;
-		}
-	}
 	public string Description
 	{
 		get

@@ -21,6 +21,9 @@ public class Structure : MonoBehaviour
 	[Header("Visuals")]
 	[SerializeField] private Transform rotateableMesh;
 	[SerializeField] private float lookSpeed = 10.0f;
+	[SerializeField] private GameObject shootEffectPrefab;
+	[SerializeField] private GameObject placeEffectPrefab;
+	private Animator animator;
 
 	[Header("Stats")]
 	private int damage;
@@ -32,11 +35,19 @@ public class Structure : MonoBehaviour
 
     public virtual void Initialize(StructureData data)
 	{
+		GetComponent<Collider>().enabled = true;
+		animator = GetComponent<Animator>();
 		stats = GetComponent<StructureStats>();
 		stats.Initialize(data);
+
 		damage = data.Damage;
 		initialized = true;
-		GetComponent<Collider>().enabled = true;
+
+		GameObject effect = Instantiate(placeEffectPrefab, projectileSpawnPoint.position, transform.rotation);
+		Destroy(effect, 1.0f);
+
+		AudioManager.PlayAudio("StructurePlace");
+		CameraShake.instance.ShakeObject(ShakeDuration.Small, ShakeMagnitude.Small);
 	}
 
 	private void Update()
@@ -82,14 +93,26 @@ public class Structure : MonoBehaviour
 
 		if (currentTime <= 0)
 		{
-			Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation).GetComponent<Projectile>();
-			projectile.Initialize(damage, attackTarget, enemyLayer);
 			currentTime = attackDelay;
+			StartCoroutine(Shoot());
 		}
 		else
 		{
 			currentTime -= Time.deltaTime;
 		}
+	}
+
+	private IEnumerator Shoot()
+	{
+		animator.SetTrigger("Shoot");
+		yield return new WaitForSeconds(0.05f);
+		AudioManager.PlayAudio("CannonFire");
+		CameraShake.instance.ShakeObject(ShakeDuration.Small, ShakeMagnitude.Small);
+		GameObject effect = Instantiate(shootEffectPrefab, projectileSpawnPoint.position, shootEffectPrefab.transform.rotation);
+		Destroy(effect, 1.0f);
+
+		Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation).GetComponent<Projectile>();
+		projectile.Initialize(damage, attackTarget, enemyLayer);
 	}
 
 	private void RotateTowardsTarget()

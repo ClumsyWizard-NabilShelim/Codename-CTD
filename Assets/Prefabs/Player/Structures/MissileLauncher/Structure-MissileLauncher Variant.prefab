@@ -592,6 +592,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Structure-MissileLauncher Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 592106002000977156, guid: 423adb5b4f4532c4381a0c6ff6d791c3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743791496913633905, guid: 423adb5b4f4532c4381a0c6ff6d791c3, type: 3}
+      propertyPath: sounds.Array.data[1].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 029331eb13c512a4c950932e20cb3fc7, type: 3}
     - target: {fileID: 6845468848924281278, guid: 423adb5b4f4532c4381a0c6ff6d791c3, type: 3}
       propertyPath: attackDelay
       value: 1
@@ -616,7 +624,12 @@ PrefabInstance:
       propertyPath: projectileSpawnPoint
       value: 
       objectReference: {fileID: 287931797448813585}
-    m_RemovedComponents: []
+    - target: {fileID: 7673170372271850660, guid: 423adb5b4f4532c4381a0c6ff6d791c3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 266cbc6ab4c04b941957a0c26b4a910f, type: 2}
+    m_RemovedComponents:
+    - {fileID: 1743791496913633905, guid: 423adb5b4f4532c4381a0c6ff6d791c3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 423adb5b4f4532c4381a0c6ff6d791c3, type: 3}
 --- !u!4 &2862705613170234282 stripped
 Transform:

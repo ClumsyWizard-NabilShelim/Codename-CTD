@@ -397,6 +397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Structure-Catapult Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1743791496913633905, guid: 423adb5b4f4532c4381a0c6ff6d791c3, type: 3}
+      propertyPath: sounds.Array.data[1].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 029331eb13c512a4c950932e20cb3fc7, type: 3}
     - target: {fileID: 6845468848924281278, guid: 423adb5b4f4532c4381a0c6ff6d791c3, type: 3}
       propertyPath: attackDelay
       value: 2
@@ -417,7 +421,12 @@ PrefabInstance:
       propertyPath: projectileSpawnPoint
       value: 
       objectReference: {fileID: 7457119070295662021}
-    m_RemovedComponents: []
+    - target: {fileID: 7673170372271850660, guid: 423adb5b4f4532c4381a0c6ff6d791c3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 76d890c4817182e4780b0b15201a1da4, type: 2}
+    m_RemovedComponents:
+    - {fileID: 1743791496913633905, guid: 423adb5b4f4532c4381a0c6ff6d791c3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 423adb5b4f4532c4381a0c6ff6d791c3, type: 3}
 --- !u!4 &6115181033874467982 stripped
 Transform:
